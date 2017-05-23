@@ -3,7 +3,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {Provider} from 'react-redux';
 import store from './store';
-import {newGame, newGuess, toggleInfoModal} from './actions/index';
+// import {newGame, newGuess, toggleInfoModal} from './actions/index';
 import './reset.css';
 import './index.css';
 import Game from './components/game';
