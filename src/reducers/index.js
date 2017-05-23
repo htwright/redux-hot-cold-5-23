@@ -12,10 +12,17 @@ export const reducer = (state = initialState, action) => {
     if (action.type === NEW_GAME){
         return initialState;
     } else if (action.type === NEW_GUESS){
-        return Object.assign({}, state, {
-            guesses: [...state.guesses, action.guess],
-            feedback: feedbackGenerator(Math.abs(action.guess - state.correctAnswer))
-        });
+        if(!(isNaN(action.guess))){
+            return Object.assign({}, state, {
+                guesses: [...state.guesses, action.guess],
+                feedback: feedbackGenerator(Math.abs(action.guess - state.correctAnswer))
+            });
+        } else {
+            return Object.assign({}, state, {
+                guesses: [...state.guesses],
+                feedback: 'Please enter a plain, whole number!'
+            });
+        }
     } else if (action.type === TOGGLE_INFO_MODAL){
         return Object.assign({}, state, {showInfoModal: !state.showInfoModal});
     }
