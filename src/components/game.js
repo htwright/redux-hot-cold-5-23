@@ -4,12 +4,12 @@ import Header from './header';
 import GuessSection from './guess-section';
 import GuessCount  from './guess-count';
 import GuessList from './guess-list';
-import {newGuess, newGame, showInfoModal} from '../actions';
+import {newGuess, newGame, toggleInfoModal} from '../actions';
 
 export function Game(props){
     return (
             <div>
-                <Header onNewGame={() => props.dispatch(newGame())}/>
+                <Header onNewGame={() => props.dispatch(newGame())} onShowModal={()=>props.dispatch(toggleInfoModal())} modalShowing={props.showInfoModal}/>
                 <GuessSection feedback={props.feedback}
                     onGuess={(guess) => props.dispatch(newGuess(parseInt(guess)))} />
                 <GuessCount count={props.guesses.length} />

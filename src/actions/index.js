@@ -13,8 +13,7 @@ export const newGuess = guess => ({
 });
 
 export const TOGGLE_INFO_MODAL = 'TOGGLE_INFO_MODAL';
-export const toggleInfoModal = showInfoModal => ({
-    type: TOGGLE_INFO_MODAL,
-    showInfoModal
+export const toggleInfoModal = () => ({
+    type: TOGGLE_INFO_MODAL
 });
 

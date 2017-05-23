@@ -1,5 +1,5 @@
 import React from 'react';
-
+// import {connect} from 'react-redux';
 import TopNav from './top-nav';
 import InfoModal from './info-modal';
 
@@ -8,26 +8,26 @@ import './header.css';
 export default class Header extends React.Component  {
     constructor(props) {
         super(props);
-        this.state = {
-            showInfoModal: false
-        };
+        // this.state = {
+        //     showInfoModal: false
+        // };
     }
 
-    toggleInfoModal() {
-        this.setState({
-            showInfoModal: !this.state.showInfoModal
-        });
-    }
+    // toggleInfoModal() {
+    //     this.setState({
+    //         showInfoModal: !this.state.showInfoModal
+    //     });
+    // }
 
     render() {
         let infoModal;
-        if (this.state.showInfoModal) {
-            infoModal = <InfoModal onClose={() => this.toggleInfoModal()} />;
+        if (this.props.modalShowing) {
+            infoModal = <InfoModal onInfo={this.props.onShowModal} />;
         }
 
         return (
             <header>
-                <TopNav onInfo={() => this.toggleInfoModal()}
+                <TopNav onInfo={this.props.onShowModal}
                     onNewGame={this.props.onNewGame} />
                 {infoModal}
                 <h1>HOT or COLD</h1>
@@ -35,3 +35,4 @@ export default class Header extends React.Component  {
         );
     }
 };
+// export default connect()(Header);
